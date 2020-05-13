@@ -1,15 +1,29 @@
-const Engine = Matter.Engine;
-const World= Matter.World;
-const Bodies = Matter.Bodies;
-const Constraint = Matter.Constraint;
+var canvas , backgroundIMG;
+var gameState= 0;
+var votersCount;
+var allVoters
+
+var database;
+
+var form , game , voter;
+
 
 function setup(){
     var canvas = createCanvas(1200,400);
-    engine = Engine.create();
-    world = engine.world;
-}
+    database = firebase.database;
+    game = new Game();
+    game.getState();
+    game.start();
+};
 
     function draw(){
-        background(255,255,255);
-        Engine.update(engine);
+       if(voterCount === 4){
+           game.update(1);
+
+       }
+       if(gameState === 1){
+           clear();
+           game.play();
+       }
+       
     }
